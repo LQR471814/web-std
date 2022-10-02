@@ -1,0 +1,27 @@
+<script lang="ts">
+  import { getContext } from "svelte/internal";
+  import { Context, iconKey } from "~/icons/common";
+
+  const context = getContext<Context>(iconKey)
+
+  export let className = context.className
+  export let width = context.width
+  export let height = context.height
+  export let x = context.x
+  export let y = context.y
+  export let type = context.type
+</script>
+
+<svg
+  class={className}
+  width={width}
+  height={height}
+  x={x}
+  y={y}
+>
+  {#if type ?? "line" === "line"}
+    <path fill="none" d="M0 0h24v24H0z"/><path fill-rule="nonzero" d="M17.457 3L21 3.003l.002 3.523-5.467 5.466 2.828 2.829 1.415-1.414 1.414 1.414-2.474 2.475 2.828 2.829-1.414 1.414-2.829-2.829-2.475 2.475-1.414-1.414 1.414-1.415-2.829-2.828-2.828 2.828 1.415 1.415-1.414 1.414-2.475-2.475-2.829 2.829-1.414-1.414 2.829-2.83-2.475-2.474 1.414-1.414 1.414 1.413 2.827-2.828-5.46-5.46L3 3l3.546.003 5.453 5.454L17.457 3zm-7.58 10.406L7.05 16.234l.708.707 2.827-2.828-.707-.707zm9.124-8.405h-.717l-4.87 4.869.706.707 4.881-4.879v-.697zm-14 0v.7l11.241 11.241.707-.707L5.716 5.002l-.715-.001z"/>
+  {:else if type === "fill"}
+    <path fill="none" d="M0 0h24v24H0z"/><path fill-rule="nonzero" d="M7.05 13.406l3.534 3.536-1.413 1.414 1.415 1.415-1.414 1.414-2.475-2.475-2.829 2.829-1.414-1.414 2.829-2.83-2.475-2.474 1.414-1.414 1.414 1.413 1.413-1.414zM3 3l3.546.003 11.817 11.818 1.415-1.414 1.414 1.414-2.474 2.475 2.828 2.829-1.414 1.414-2.829-2.829-2.475 2.475-1.414-1.414 1.414-1.415L3.003 6.531 3 3zm14.457 0L21 3.003l.002 3.523-4.053 4.052-3.536-3.535L17.457 3z"/>
+  {/if}
+</svg>

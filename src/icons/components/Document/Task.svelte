@@ -1,0 +1,27 @@
+<script lang="ts">
+  import { getContext } from "svelte/internal";
+  import { Context, iconKey } from "~/icons/common";
+
+  const context = getContext<Context>(iconKey)
+
+  export let className = context.className
+  export let width = context.width
+  export let height = context.height
+  export let x = context.x
+  export let y = context.y
+  export let type = context.type
+</script>
+
+<svg
+  class={className}
+  width={width}
+  height={height}
+  x={x}
+  y={y}
+>
+  {#if type ?? "line" === "line"}
+    <path fill="none" d="M0 0h24v24H0z"/><path d="M21 2.992v18.016a1 1 0 0 1-.993.992H3.993A.993.993 0 0 1 3 21.008V2.992A1 1 0 0 1 3.993 2h16.014c.548 0 .993.444.993.992zM19 4H5v16h14V4zm-7.707 9.121l4.243-4.242 1.414 1.414-5.657 5.657-3.89-3.89 1.415-1.414 2.475 2.475z"/>
+  {:else if type === "fill"}
+    <path fill="none" d="M0 0h24v24H0z"/><path d="M21 2.992v18.016a1 1 0 0 1-.993.992H3.993A.993.993 0 0 1 3 21.008V2.992A1 1 0 0 1 3.993 2h16.014c.548 0 .993.444.993.992zm-9.707 10.13l-2.475-2.476-1.414 1.415 3.889 3.889 5.657-5.657-1.414-1.414-4.243 4.242z"/>
+  {/if}
+</svg>
