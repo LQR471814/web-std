@@ -14,8 +14,8 @@ assets/icons: assets
 	rm RemixIcon_SVG_$(ICON_VERSION).zip
 
 icons: assets/icons src/icons/components
-	$(PYTHON) icon_conversion.py
+	$(PYTHON) scripts/convert_icons.py
 	rm -rf assets
 
 clean:
-	rm -rf src/icons/components
+	rm -rf packages/icons/*

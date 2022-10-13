@@ -4,13 +4,13 @@
     "noImplicitAny": true,
     "baseUrl": "src",
     "paths": {
-      "~/*": ["*"]
+      "~/*": [
+        "*"
+      ]
     }
   },
   "extends": "@tsconfig/svelte/tsconfig.json",
-  "include": [
-    "src/**/*"
-  ],
+  "include": ["src/**/*"],
   "exclude": [
     "node_modules/*",
     "__sapper__/*",

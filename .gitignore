@@ -1,6 +1,8 @@
 node_modules/
 build/
 assets/
+src/icons/
+packages/icons/
 
 package-lock.json
 yarn.lock

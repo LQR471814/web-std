@@ -1,9 +1,9 @@
 <script lang="ts">
   import { createEventDispatcher } from "svelte";
   import { slide } from "svelte/transition";
-  import { classList } from "~/common/general";
+  import { classList } from "@web-std/common/general";
 
-  import Information from "~/icons/components/System/Information.svelte";
+  import Information from "@web-std/icons/Information.svelte";
 
   const dispatcher = createEventDispatcher<{ input: string }>();
 

@@ -1,21 +1,32 @@
 {
   "name": "web-std",
   "version": "0.1.0",
+  "svelte": "src/main.ts",
+  "type": "module",
+  "files": [
+    "src/**"
+  ],
   "scripts": {
+    "rollup-build": "rollup -c && tsc --outDir ./build --declaration",
     "build": "vite build --emptyOutDir",
     "dev": "vite --host",
     "preview": "vite preview",
     "check": "svelte-check --tsconfig tsconfig.json"
   },
   "devDependencies": {
+    "@rollup/plugin-node-resolve": "^14.1.0",
+    "@rollup/plugin-typescript": "^8.5.0",
     "@sveltejs/vite-plugin-svelte": "1.0.0-next.47",
     "@tsconfig/svelte": "^2.0.0",
     "@types/lodash.clonedeep": "^4.5.7",
     "autoprefixer": "^10.4.7",
+    "glob": "^8.0.3",
     "postcss": "^8.4.13",
+    "rollup": "^2.79.1",
+    "rollup-plugin-svelte": "^7.1.0",
     "svelte": "^3.0.0",
     "svelte-check": "^2.0.0",
-    "svelte-preprocess": "^4.0.0",
+    "svelte-preprocess": "^4.10.7",
     "tailwindcss": "^3.0.24",
     "tslib": "^2.0.0",
     "typescript": "^4.0.0",
@@ -23,5 +34,11 @@
   },
   "dependencies": {
     "lodash.clonedeep": "^4.5.0"
+  },
+  "peerDependencies": {
+    "lodash.clonedeep": "^4.5.0",
+    "tailwindcss": "^3.0.24",
+    "postcss": "^8.4.13",
+    "autoprefixer": "^10.4.7"
   }
 }
