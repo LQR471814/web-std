@@ -34,8 +34,8 @@ def package_name(directory: str) -> str:
 
 def main() -> None:
     packages = []
-    for entry in listdir("packages"):
-        path = join("packages", entry)
+    for entry in listdir("src"):
+        path = join("src", entry)
         if isdir(path):
             packages.append(path)
 

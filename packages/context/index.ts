@@ -1,1 +1,0 @@
-export { default as IconContext } from "./IconContext.svelte"

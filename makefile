@@ -1,11 +1,17 @@
 ICON_VERSION = v2.5.0
-PYTHON = py
+PYTHON = python3
 
+# * package generation
+packages:
+	mkdir packages
+	cp src/**/[!_]*.{ts,svelte} packages/
+
+packages/icons: packages
+	mkdir packages/icons
+
+# * icon generation
 assets:
 	mkdir assets
-
-src/icons/components:
-	mkdir src/icons/components
 
 assets/icons: assets
 	wget https://github.com/Remix-Design/RemixIcon/releases/download/$(ICON_VERSION)/RemixIcon_SVG_$(ICON_VERSION).zip
@@ -13,9 +19,10 @@ assets/icons: assets
 	mv icons assets/icons
 	rm RemixIcon_SVG_$(ICON_VERSION).zip
 
-icons: assets/icons src/icons/components
+icons: assets/icons packages/icons
 	$(PYTHON) scripts/convert_icons.py
 	rm -rf assets
 
+# * cleanup
 clean:
-	rm -rf packages/icons/*
+	rm -rf packages

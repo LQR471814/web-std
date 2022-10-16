@@ -1,4 +1,4 @@
-from os import listdir, mkdir
+from os import listdir
 from os.path import join
 
 import lxml.etree as etree
@@ -16,11 +16,13 @@ def main():
         processed: dict[str, str] = {}
 
         for icon in listdir(join(source, category)):
-            filename, _ = icon.split(".")
+            filename = icon.split(".")[0]
 
             segments = filename.split("-")
             variant = segments.pop()
             component_name = "".join([s.capitalize() for s in segments])
+            if len(component_name) == 0:
+                continue
 
             with open(join(source, category, icon), mode="r") as icon_file:
                 svg_content = ""
