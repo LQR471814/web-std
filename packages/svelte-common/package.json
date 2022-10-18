@@ -1,0 +1,14 @@
+{
+  "name": "@web-std/svelte-common",
+  "version": "0.1.0",
+  "type": "module",
+  "devDependencies": {
+    "@tsconfig/svelte": "^2.0.0",
+    "svelte": "^3.0.0",
+    "typescript": "^4.0.0",
+    "tslib": "^2.0.0"
+  },
+  "exports": {
+    "./hooks.ts": "./src/hooks.ts"
+  }
+}

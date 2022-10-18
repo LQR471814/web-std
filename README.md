@@ -1,6 +1,6 @@
 ## web-std
 
-> a collection of utilities I always end up copying or reimplementing in other projects.
+> a monorepo of utilities I always end up copying or reimplementing in other projects.
 
 this library goes well with the [tsvt-template](https://github.com/LQR471814/tsvt-template.git)
 
@@ -11,6 +11,24 @@ this library goes well with the [tsvt-template](https://github.com/LQR471814/tsv
 | svelte | typescript | tailwind |
 
 the typescript utilities can be used independently, however if you wish to use the svelte components, make sure to include all the other technologies
+
+### package index
+
+| name | typescript | tailwind | svelte | description |
+| --- | --- | --- | --- | --- |
+| common | ✔ | ✘ | ✘ | commonly used utilities |
+| form | ✔ | ✔ | ✔ | form components (text fields, inputs, etc...) |
+| icons | ✔ | ✘ | ✔ | icons from RemixIcon |
+| svelte-common | ✔ | ✘ | ✔ | commonly used, svelte specific utilities (hooks, actions) |
+| utility | ✔ | ✔ | ✔ | svelte utility components |
+| wrappers | ✔ | ✔ | ✔ | svelte wrapper components |
+
+### extending
+
+the `scripts/` exist for convenience when adding new packages, execute them at the root of the directory
+
+- `python3 scripts/add_package.py <package template> <package name>` - this adds or updates an existing package according to a template under `templates/`
+- `python3 scripts/manage_index.py` - this updates the `index.ts` file for svelte packages or `package.json`'s `"exports"` field.
 
 ### icon conversion
 

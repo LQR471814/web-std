@@ -4,7 +4,7 @@ PYTHON = python3
 # * package generation
 packages:
 	mkdir packages
-	cp src/**/[!_]*.{ts,svelte} packages/
+# cp src/**/[!_]*.{ts,svelte} packages/
 
 packages/icons: packages
 	mkdir packages/icons

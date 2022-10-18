@@ -1,0 +1,9 @@
+{
+  "name": "@web-std",
+  "version": "0.1.0",
+  "type": "module",
+  "devDependencies": {
+    "typescript": "^4.0.0",
+    "tslib": "^2.0.0"
+  }
+}

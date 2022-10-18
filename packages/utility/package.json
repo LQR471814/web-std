@@ -1,0 +1,16 @@
+{
+  "name": "@web-std/utility",
+  "version": "0.1.0",
+  "type": "module",
+  "devDependencies": {
+    "typescript": "^4.0.0",
+    "tslib": "^2.0.0",
+    "@tsconfig/svelte": "^2.0.0",
+    "svelte": "^3.0.0",
+    "svelte-preprocess": "^4.10.7",
+    "tailwindcss": "^3.0.24",
+    "postcss": "^8.4.13"
+  },
+  "main": "src/index.ts",
+  "svelte": "src/index.ts"
+}
