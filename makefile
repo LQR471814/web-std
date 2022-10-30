@@ -23,6 +23,9 @@ icons: assets/icons packages/icons
 	$(PYTHON) scripts/convert_icons.py
 	rm -rf assets
 
+setup: icons
+	$(PYTHON) scripts/setup.py
+
 # * cleanup
 clean:
 	rm -rf packages
