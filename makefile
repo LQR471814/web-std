@@ -4,7 +4,7 @@ PYTHON = python3
 # * icon generation
 setup:
 	cd packages/icons && \
-		$(PYTHON) generate_icons.py
+		make svelte-icons
 	$(PYTHON) scripts/setup.py
 
 # * cleanup
