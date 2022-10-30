@@ -3,7 +3,8 @@
     "strict": true,
     "noImplicitAny": true,
     "baseUrl": "src",
-    "lib": ["ESNext"]
+    "lib": ["ESNext"],
+    "moduleResolution": "NodeNext"
   },
   "extends": "@tsconfig/svelte/tsconfig.json",
   "include": ["src/**/*"],

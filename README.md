@@ -28,13 +28,13 @@ the typescript utilities can be used independently, however if you wish to use t
 
 | name | typescript | tailwind | svelte | description |
 | --- | --- | --- | --- | --- |
-| common | ✔ | ✘ | ✘ | commonly used utilities |
-| form | ✔ | ✔ | ✔ | form components (text fields, inputs, etc...) |
-| icons | ✔ | ✘ | ✔ | icons from RemixIcon |
+| common | ✔ | ✘ | ✘ | commonly used DOM utilities |
+| form | ✔ | ✔ | ✔ | svelte form components (text fields, inputs, etc...) |
+| icons | ✔ | ✘ | ✔ | svelte wrappers for icons from RemixIcon |
 | store | ✔ | ✘ | ✘ | stores for persistent and ephemeral storage |
 | svelte-common | ✔ | ✘ | ✔ | commonly used, svelte specific utilities (hooks, actions) |
-| utility | ✔ | ✔ | ✔ | svelte utility components |
-| wrappers | ✔ | ✔ | ✔ | svelte wrapper components |
+| utility | ✔ | ✔ | ✔ | general svelte components |
+| wrappers | ✔ | ✔ | ✔ | higher-order svelte components |
 
 ### extending
 

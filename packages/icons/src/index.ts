@@ -1,3 +1,4 @@
+export { default as Wallet2 } from "./wallet-2.icon.svelte"
 export { default as Criminal } from "./criminal.icon.svelte"
 export { default as HandSanitizer } from "./hand-sanitizer.icon.svelte"
 export { default as BitCoin } from "./bit-coin.icon.svelte"
