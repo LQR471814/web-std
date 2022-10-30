@@ -9,8 +9,8 @@ export let fit: "contain" | "cover" | "fill" | "scale-down" | "none" =
   "contain";
 export let className = "";
 
-export let width: number | undefined;
-export let height: number | undefined;
+export let width: number | undefined = undefined;
+export let height: number | undefined = undefined;
 
 const src = imageStore.fetch(image);
 </script>
