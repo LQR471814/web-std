@@ -9,7 +9,6 @@ when using the typescript packages, make sure to add
 ```json
 {
   "compilerOptions": {
-    ...,
     "moduleResolution": "NodeNext"
   }
 }
