@@ -1,0 +1,18 @@
+{
+  "name": "@web-std/store",
+  "version": "0.1.0",
+  "type": "module",
+  "devDependencies": {
+    "tslib": "^2.0.0",
+    "typescript": "^4.0.0"
+  },
+  "dependencies": {
+    "idb": "^7.1.0",
+    "sha1-uint8array": "^0.10.3",
+    "@web-std/common": "link:../common"
+  },
+  "exports": {
+    "./image.ts": "./src/image.ts",
+    "./db.ts": "./src/db.ts"
+  }
+}

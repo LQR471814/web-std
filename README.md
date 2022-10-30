@@ -4,6 +4,19 @@
 
 this library goes well with the [tsvt-template](https://github.com/LQR471814/tsvt-template.git)
 
+when using the typescript packages, make sure to add
+
+```json
+{
+  "compilerOptions": {
+    ...,
+    "moduleResolution": "NodeNext"
+  }
+}
+```
+
+in your `tsconfig.json` file
+
 ### technologies
 
 | framework | language | css |
@@ -19,6 +32,7 @@ the typescript utilities can be used independently, however if you wish to use t
 | common | ✔ | ✘ | ✘ | commonly used utilities |
 | form | ✔ | ✔ | ✔ | form components (text fields, inputs, etc...) |
 | icons | ✔ | ✘ | ✔ | icons from RemixIcon |
+| store | ✔ | ✘ | ✘ | stores for persistent and ephemeral storage |
 | svelte-common | ✔ | ✘ | ✔ | commonly used, svelte specific utilities (hooks, actions) |
 | utility | ✔ | ✔ | ✔ | svelte utility components |
 | wrappers | ✔ | ✔ | ✔ | svelte wrapper components |

@@ -33,6 +33,12 @@ export function styleList(style: Partial<CSSStyleDeclaration>): string {
   return rules.cssText
 }
 
+export function imageFromBytes(array: Uint8Array): string {
+  return URL.createObjectURL(
+    new Blob([array], { type: "image" })
+  )
+}
+
 export function debounce(callback: () => void, time = 200): () => void {
   let lastTriggered = 0
   return () => {
