@@ -59,14 +59,14 @@
       animate:flip={{ duration: 300 }}
     >
       <slot {e} {i} />
-      <div
+      <button
         on:click={() => {
           elements = withoutElement(elements, i);
           dispatcher("update", elements);
         }}
       >
         <Delete className={classList(clickable, "ml-4")} />
-      </div>
+      </button>
     </div>
   {/each}
 {/if}
@@ -75,16 +75,16 @@
   class={classList("my-2 flex", presets ? "justify-between" : "justify-end")}
 >
   {#if presets}
-    <div on:click={() => (showPresets = !showPresets)}>
+    <button on:click={() => (showPresets = !showPresets)}>
       <Menu className={clickable} />
-    </div>
+    </button>
   {/if}
-  <div
+  <button
     on:click={() => {
       elements = [...elements, newElement()];
       dispatcher("update", elements);
     }}
   >
     <Add className={clickable} />
-  </div>
+  </button>
 </div>
