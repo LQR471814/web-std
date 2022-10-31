@@ -3,7 +3,7 @@
   import { classList } from "@web-std/common/general.ts";
   import { useClose } from "@web-std/svelte-common/hooks.ts";
 
-  import { ArrowLeft } from "@web-std/icons";
+  import ArrowLeft from "./icons/ArrowLeft.svelte";
   import Position from "./Position.svelte";
 
   const dispatcher = createEventDispatcher<{ close: { clicked: boolean } }>();
@@ -13,7 +13,7 @@
 <slot />
 
 <Position x="left" y="top">
-  <div
+  <button
     on:click={() => dispatcher("close", { clicked: true })}
     class={classList(
       "w-16 h-16 transition-all",
@@ -21,5 +21,5 @@
     )}
   >
     <ArrowLeft className="w-full h-full" />
-  </div>
+  </button>
 </Position>

@@ -3,7 +3,7 @@
   import { resize } from "@web-std/common/actions.ts";
 
   import { classList } from "@web-std/common/general.ts";
-  import { ArrowUp } from "@web-std/icons"
+  import ArrowUp from "./icons/ArrowUp.svelte"
 
   export let label = "";
   export let className = "";
@@ -26,7 +26,7 @@
     grow ? "w-full" : ""
   )}
 >
-  <div
+  <button
     class="flex mb-2 hover:cursor-pointer"
     on:click={() => (expanded = !expanded)}
   >
@@ -42,7 +42,7 @@
     >
       <ArrowUp className="w-6 h-6" />
     </div>
-  </div>
+  </button>
   <div
     class={classList(
       "overflow-y-hidden transition-all duration-300",

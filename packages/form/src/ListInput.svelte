@@ -5,7 +5,10 @@
   import { createEventDispatcher } from "svelte";
   import { classList, withoutElement } from "@web-std/common/general.ts";
 
-  import { Add, Delete, Menu } from "@web-std/icons";
+  import Add from "./icons/Add.svelte"
+  import Delete from "./icons/Delete.svelte"
+  import Menu from "./icons/Menu.svelte"
+
   import Label from "./Label.svelte";
 
   type T = $$Generic;
@@ -28,7 +31,7 @@
 {#if showPresets && presets}
   <div class="py-2 px-4" in:fly={{ y: 10 }}>
     {#each Object.keys(presets) as k}
-      <div
+      <button
         on:click={() => {
           if (!presets) throw new Error("bad state");
           elements = cloneDeep(presets[k]);
@@ -45,7 +48,7 @@
         >
           {k}
         </Label>
-      </div>
+      </button>
     {/each}
   </div>
 {:else}

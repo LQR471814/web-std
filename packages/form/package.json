@@ -14,7 +14,6 @@
   },
   "dependencies": {
     "@web-std/common": "link:../common",
-    "@web-std/icons": "link:../icons",
     "lodash.clonedeep": "^4.5.0"
   },
   "main": "src/index.ts",

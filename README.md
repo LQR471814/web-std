@@ -30,7 +30,7 @@ the typescript utilities can be used independently, however if you wish to use t
 | --- | --- | --- | --- | --- |
 | common | ✔ | ✘ | ✘ | commonly used DOM utilities |
 | form | ✔ | ✔ | ✔ | svelte form components (text fields, inputs, etc...) |
-| icons | ✔ | ✘ | ✔ | svelte wrappers for icons from RemixIcon |
+| icons (deprecated) | ✔ | ✘ | ✔ | svelte wrappers for icons from RemixIcon (deprecated: use `remixicon-cli` instead) |
 | store | ✔ | ✘ | ✘ | stores for persistent and ephemeral storage |
 | svelte-common | ✔ | ✘ | ✔ | commonly used, svelte specific utilities (hooks, actions) |
 | utility | ✔ | ✔ | ✔ | general svelte components |

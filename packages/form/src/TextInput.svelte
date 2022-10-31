@@ -3,7 +3,7 @@
   import { slide } from "svelte/transition";
   import { classList } from "@web-std/common/general.ts";
 
-  import { Information } from "@web-std/icons";
+  import Information from "./icons/Information.svelte"
 
   const dispatcher = createEventDispatcher<{ input: string }>();
 
