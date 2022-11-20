@@ -4,17 +4,25 @@
 
 this library goes well with the [tsvt-template](https://github.com/LQR471814/tsvt-template.git)
 
-when using the typescript packages, make sure to add
+**note: this is mainly an internal tool I use in applications, there is still a lot of work required to get this package to a working public release**
+
+### installation
+
+this monorepo has not yet been published to NPM so it's best to include it as git submodule and link it in `package.json`
+
+```shell
+git submodule add https://github.com/LQR471814/web-std.git
+```
 
 ```json
 {
-  "compilerOptions": {
-    "moduleResolution": "NodeNext"
+  "name": "package-name",
+  "type": "module",
+  "dependencies": {
+    "@web-std/common": "link:web-std/packages/common"
   }
 }
 ```
-
-in your `tsconfig.json` file
 
 ### technologies
 
@@ -31,6 +39,7 @@ the typescript utilities can be used independently, however if you wish to use t
 | common | ✔ | ✘ | ✘ | commonly used DOM utilities |
 | form | ✔ | ✔ | ✔ | svelte form components (text fields, inputs, etc...) |
 | icons (deprecated) | ✔ | ✘ | ✔ | svelte wrappers for icons from RemixIcon (deprecated: use `remixicon-cli` instead) |
+| flux | ✔ | ✘ | ✔ | minimal boilerplate flux architecture for svelte apps |
 | store | ✔ | ✘ | ✘ | stores for persistent and ephemeral storage |
 | svelte-common | ✔ | ✘ | ✔ | commonly used, svelte specific utilities (hooks, actions) |
 | utility | ✔ | ✔ | ✔ | general svelte components |
@@ -40,8 +49,17 @@ the typescript utilities can be used independently, however if you wish to use t
 
 the `scripts/` exist for convenience when adding new packages, execute them at the root of the directory
 
-- `python3 scripts/add_package.py <package template> <package name>` - this adds or updates an existing package according to a template under `templates/`
-- `python3 scripts/manage_index.py` - this updates the `index.ts` file for svelte packages or `package.json`'s `"exports"` field.
+```shell
+python3 scripts/add_package.py <package template> <package name>
+```
+
+- this adds or updates an existing package according to a template under `templates/`
+
+```shell
+python3 scripts/manage_index.py
+```
+
+- this updates the `index.ts` file for svelte packages or `package.json`'s `"exports"` field.
 
 ### icon conversion
 

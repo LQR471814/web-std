@@ -28,12 +28,12 @@ export function classList(...classes: string[]): string {
 }
 
 export function styleList(style: Partial<CSSStyleDeclaration>): string {
-  const rules = document.createElement("div").style;
-  Object.assign(rules, style)
-  return rules.cssText
+  const element = document.createElement("span")
+  Object.assign(element.style, style)
+  return element.style.cssText
 }
 
-export function imageFromBytes(array: Uint8Array): string {
+export function imageFromBytes(array: ArrayBuffer): string {
   return URL.createObjectURL(
     new Blob([array], { type: "image" })
   )
@@ -65,4 +65,34 @@ export function ramp(value: number, stops: [...stop: Stop[]]): (typeof stops[num
     }
   }
   return stops[stops.length - 1].value
+}
+
+export function sortAlphabetically<T>(
+  values: T[], predicate: (v: T) => string
+) {
+  return values.sort((a, b) => {
+    const nameA = predicate(a)
+    const nameB = predicate(b)
+    if (nameA < nameB) {
+      return -1
+    }
+    if (nameA > nameB) {
+      return 1
+    }
+    return 0
+  })
+}
+
+export function clamp(n: number, min: number, max: number) {
+  if (n < min) {
+    return min
+  }
+  if (n > max) {
+    return max
+  }
+  return n
+}
+
+export function randomString(length: number) {
+  return Math.random().toString(16).slice(2, length+2);
 }

@@ -4,7 +4,6 @@
     "noImplicitAny": true,
     "baseUrl": "src",
     "lib": ["ESNext", "DOM"],
-    "moduleResolution": "NodeNext"
   },
   "include": ["src/**/*"],
   "exclude": ["node_modules/*"]

@@ -5,10 +5,5 @@
   "devDependencies": {
     "typescript": "^4.0.0",
     "tslib": "^2.0.0"
-  },
-  "exports": {
-    "./actions.ts": "./src/actions.ts",
-    "./platform.ts": "./src/platform.ts",
-    "./general.ts": "./src/general.ts"
   }
 }

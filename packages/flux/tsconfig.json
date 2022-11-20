@@ -4,7 +4,8 @@
     "noImplicitAny": true,
     "baseUrl": "src",
     "lib": [
-      "ESNext"
+      "ESNext",
+      "DOM"
     ],
   },
   "include": [
@@ -12,6 +13,5 @@
   ],
   "exclude": [
     "node_modules/*"
-  ],
-  "extends": "@tsconfig/svelte/tsconfig.json"
+  ]
 }

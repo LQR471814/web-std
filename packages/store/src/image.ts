@@ -1,5 +1,5 @@
 import { createHash } from "sha1-uint8array"
-import { imageFromBytes } from "@web-std/common/general.ts"
+import { imageFromBytes } from "@web-std/common/src/general"
 
 export class ImageStore {
   store: {

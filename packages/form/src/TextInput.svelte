@@ -1,7 +1,7 @@
 <script lang="ts">
   import { createEventDispatcher } from "svelte";
   import { slide } from "svelte/transition";
-  import { classList } from "@web-std/common/general.ts";
+  import { classList } from "@web-std/common/src/general";
 
   import Information from "./icons/Information.svelte"
 

@@ -1,3 +1,5 @@
+import { randomString } from "./general"
+
 export type ResizeOptions = (node: HTMLElement, w: number, h: number) => void
 
 export function resize(node: HTMLElement, options: ResizeOptions) {
@@ -67,7 +69,7 @@ export type ClickOutsideOptions = {
 }
 
 export function clickOutside(node: HTMLElement, options: ClickOutsideOptions) {
-  const key = "clickoutside"
+  const key = `clickoutside-${randomString(8)}`
   node.setAttribute(key, "true")
 
   const handler = (e: MouseEvent) => {

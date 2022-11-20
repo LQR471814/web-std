@@ -14,7 +14,9 @@
   },
   "dependencies": {
     "@web-std/common": "link:../common",
-    "lodash.clonedeep": "^4.5.0"
+    "color2k": "^2.0.0",
+    "lodash.clonedeep": "^4.5.0",
+    "tailwind-merge": "^1.8.0"
   },
   "main": "src/index.ts",
   "svelte": "src/index.ts"

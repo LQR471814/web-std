@@ -3,7 +3,7 @@
   import { fly } from "svelte/transition";
   import { flip } from "svelte/animate";
   import { createEventDispatcher } from "svelte";
-  import { classList, withoutElement } from "@web-std/common/general.ts";
+  import { classList, withoutElement } from "@web-std/common/src/general";
 
   import Add from "./icons/Add.svelte"
   import Delete from "./icons/Delete.svelte"

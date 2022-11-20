@@ -3,18 +3,20 @@
   "version": "0.1.0",
   "type": "module",
   "devDependencies": {
-    "typescript": "^4.0.0",
-    "tslib": "^2.0.0",
     "@tsconfig/svelte": "^2.0.0",
+    "postcss": "^8.4.13",
     "svelte": "^3.0.0",
     "svelte-preprocess": "^4.10.7",
     "tailwindcss": "^3.0.24",
-    "postcss": "^8.4.13"
+    "tslib": "^2.0.0",
+    "typescript": "^4.0.0"
   },
   "dependencies": {
     "@web-std/common": "link:../common",
+    "@web-std/form": "link:../form",
+    "@web-std/icons": "link:../icons",
     "@web-std/svelte-common": "link:../svelte-common",
-    "@web-std/icons": "link:../icons"
+    "tailwind-merge": "^1.8.0"
   },
   "main": "src/index.ts",
   "svelte": "src/index.ts"

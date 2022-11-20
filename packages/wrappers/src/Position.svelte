@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { classList, styleList } from "@web-std/common/general.ts";
+  import { classList, styleList } from "@web-std/common/src/general";
 
   type X = "left" | "middle" | "right";
   type Y = "top" | "middle" | "bottom";

@@ -1,12 +1,15 @@
 import json
 from os import listdir
-from os.path import join
+from os.path import join, exists
 
 from utils import to_pascal, packages
 
 
 def run():
     for package in listdir(packages):
+        if exists(join(packages, package, "_hasindex")):
+            continue
+
         svelte = False
         with open(join(packages, package, "package.json"), "r") as f:
             package_json = json.loads(f.read())
@@ -32,20 +35,20 @@ def run():
 
             with open(join(packages, package, "src", "index.ts"), "w") as f:
                 f.write("\n".join(lines))
-        else:
-            with open(join(packages, package, "package.json"), "r+") as f:
-                package_json = json.loads(f.read())
-                package_json["exports"] = {}
+        # else:
+        #     with open(join(packages, package, "package.json"), "r+") as f:
+        #         package_json = json.loads(f.read())
+        #         package_json["exports"] = {}
 
-                for name in listdir(join(packages, package, "src")):
-                    if not name.endswith(".ts"):
-                        continue
-                    # filename = '.'.join(name.split('.')[:-1])
-                    package_json["exports"][f"./{name}"] = f"./src/{name}"
+        #         for name in listdir(join(packages, package, "src")):
+        #             if not name.endswith(".ts"):
+        #                 continue
+        #             # filename = '.'.join(name.split('.')[:-1])
+        #             package_json["exports"][f"./{name}"] = f"./src/{name}"
 
-                f.seek(0)
-                f.truncate()
-                f.write(json.dumps(package_json, indent=2))
+        #         f.seek(0)
+        #         f.truncate()
+        #         f.write(json.dumps(package_json, indent=2))
 
 
 if __name__ == "__main__":

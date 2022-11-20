@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { classList } from "@web-std/common/general.ts";
+  import { classList } from "@web-std/common/src/general";
   export let className = ""
 </script>
 

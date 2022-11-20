@@ -1,27 +1,42 @@
 <script lang="ts">
-  import { classList, styleList } from "@web-std/common/general.ts";
+import { twMerge } from "tailwind-merge";
+import { styleList } from "@web-std/common/src/general";
 
-  type LabelPreset = "h2" | "h3" | "h4" | "p";
+type LabelPreset = "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "p" | "span";
 
-  export let preset: LabelPreset;
-  export let className = "";
-  export let style: Partial<CSSStyleDeclaration> | undefined = undefined;
+export let preset: LabelPreset;
 
-  $: _style = styleList(style ?? {});
+export let className: string | undefined = undefined;
+export let style: Partial<CSSStyleDeclaration> | undefined = undefined;
+export let noMargin = false;
+export let noBold = false;
+
+$: _style = style ? styleList(style) : undefined;
+
+const classMap: {
+  [key in LabelPreset]: string;
+} = {
+  h1: "text-4xl font-bold mb-2",
+  h2: "text-2xl font-bold mb-2",
+  h3: "text-xl font-semibold",
+  h4: "text-md font-semibold my-1",
+  h5: "text-sm",
+  h6: "text-xs",
+  p: "text-sm",
+  span: "text-sm inline",
+};
 </script>
 
-{#if preset === "h2"}
-  <h2 class={classList("text-xl font-bold mb-3", className)} style={_style}>
-    <slot />
-  </h2>
-{:else if preset === "h3"}
-  <h3 class={classList("text-md font-semibold", className)} style={_style}>
-    <slot />
-  </h3>
-{:else if preset === "h4"}
-  <h4 class={classList("text-sm font-semibold my-1", className)} style={_style}>
-    <slot />
-  </h4>
-{:else if preset === "p"}
-  <p class={classList("text-sm", className)} style={_style}><slot /></p>
-{/if}
+<svelte:element
+  this={preset}
+  class={twMerge(
+    "text-start",
+    classMap[preset],
+    className ?? "",
+    noMargin ? "m-0" : "",
+    noBold ? "font-normal" : "",
+  )}
+  style={_style}
+>
+  <slot />
+</svelte:element>
