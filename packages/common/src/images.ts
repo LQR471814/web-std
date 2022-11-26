@@ -14,7 +14,7 @@ export type ProcessingContext = {
 
 export async function handleSource(source: ImageSource): Promise<Uint8Array> {
     if (typeof source !== "string") {
-        throw new Error("WallpaperDB.processImage() source is not a string, but it should be a string")
+        return source
     }
 
     const usePath = () => {
@@ -26,14 +26,15 @@ export async function handleSource(source: ImageSource): Promise<Uint8Array> {
     const response = await window.fetch(
         source.startsWith("data:") ? source : usePath()
     )
+
     const buffer = await response.arrayBuffer()
     return new Uint8Array(buffer)
 }
 
 export async function processImage(
     source: ImageSource,
-    callback: (c: ProcessingContext) => void
-): Promise<string | null> {
+    callbacks: ((c: ProcessingContext) => void)[]
+): Promise<Uint8Array[] | null> {
     const buffer = await handleSource(source)
     const bufferURL = imageFromBytes(buffer)
 
@@ -49,14 +50,21 @@ export async function processImage(
         return null
     }
 
-    callback({ buffer, canvas, context, image })
+    const results: Uint8Array[] = []
+    for (const callback of callbacks) {
+        callback({ buffer, canvas, context, image })
+        const dataURL = canvas.toDataURL("image/jpeg")
 
-    const dataURL = canvas.toDataURL("image/jpeg")
+        const response = await window.fetch(dataURL)
+        const bytes = new Uint8Array(await response.arrayBuffer())
+        results.push(bytes)
+    }
+
     URL.revokeObjectURL(bufferURL)
-    return dataURL
+    return results
 }
 
-export function resize(
+export async function resize(
     source: ImageSource,
     width?: number, height?: number,
     crop?: {
@@ -64,7 +72,7 @@ export function resize(
         max: [number, number]
     }
 ) {
-    return processImage(source, ({ image, context, canvas }) => {
+    const processed = await processImage(source, [({ image, context, canvas }) => {
         canvas.width = width ?? image.width
         canvas.height = height ?? image.height
 
@@ -83,7 +91,11 @@ export function resize(
             width ?? image.width,
             height ?? image.height
         )
-    })
+    }])
+    if (processed) {
+        return processed[0]
+    }
+    return null
 }
 
 export function width(box: Box) {

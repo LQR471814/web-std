@@ -1,10 +1,10 @@
 <script lang="ts">
 import { twMerge } from "tailwind-merge";
 import { classList, styleList } from "@web-std/common/src/general";
-import { Label } from "@web-std/form";
+import Label from "@web-std/form/src/Label.svelte";
 import { fly } from "svelte/transition";
 import { ComponentConstructorOptions, createEventDispatcher, SvelteComponentTyped } from "svelte";
-import { clickOutside } from "@web-std/common/src/actions";
+import { clickOutside } from "@web-std/svelte-common/src/actions";
 
 interface RequiredProps {
   width?: number;
@@ -37,6 +37,7 @@ const positionMap: {
 };
 
 export let containerClass = "";
+export let menuStackClass = "";
 export let menuClass = "";
 export let labelClass = "";
 export let selectedScaling = "110%"
@@ -86,7 +87,8 @@ let selected = false;
     <div
       class={classList(
         "absolute flex gap-2",
-        positionMap[side][0] === "y" ? "w-full" : "flex-col h-full"
+        positionMap[side][0] === "y" ? "w-full" : "flex-col h-full",
+        menuStackClass
       )}
       style={styleList({
         [orthogonal]: "0",

@@ -1,4 +1,5 @@
-import { randomString } from "./general"
+import type { Readable } from "svelte/store"
+import { randomString } from "@web-std/common/src/general"
 
 export type ResizeOptions = (node: HTMLElement, w: number, h: number) => void
 
@@ -95,6 +96,49 @@ export function clickOutside(node: HTMLElement, options: ClickOutsideOptions) {
     destroy() {
       node.removeAttribute(key)
       window.removeEventListener("click", handler)
+    }
+  }
+}
+
+export type PlayingOptions = {
+  store: Readable<boolean>
+}
+
+export function controlPlay(node: HTMLMediaElement, options: PlayingOptions) {
+  const unsubscribe = options.store.subscribe(isPlaying => {
+    if (isPlaying) {
+      node.play()
+      return
+    }
+    node.pause()
+  })
+
+  return {
+    update(o: PlayingOptions) {
+      options = o
+    },
+    destroy() {
+      unsubscribe()
+    }
+  }
+}
+
+export type SafePaddingOptions = {
+  sides: ("left" | "top" | "bottom" | "right")[],
+}
+
+export function safePadding(
+  node: HTMLElement,
+  options: SafePaddingOptions
+) {
+  const style = window.getComputedStyle(node)
+  for (const side of options.sides) {
+    const styleString = `padding${side[0].toUpperCase() + side.slice(1)}` as `padding${Capitalize<typeof side>}`
+    node.style[styleString] = `max(${style[styleString]}, env(safe-area-inset-${side}))`
+  }
+  return {
+    update(o: SafePaddingOptions) {
+      options = o
     }
   }
 }

@@ -1,6 +1,6 @@
 <script lang="ts">
   import { onMount } from "svelte";
-  import { resize } from "@web-std/common/src/actions";
+  import { resize } from "@web-std/svelte-common/src/actions";
 
   import { classList } from "@web-std/common/src/general";
   import ArrowUp from "./icons/ArrowUp.svelte"

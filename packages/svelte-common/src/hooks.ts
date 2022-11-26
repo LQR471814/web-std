@@ -21,3 +21,11 @@ export function useKey(
 export function useClose(callback: (e: KeyboardEvent) => void) {
   useKey("Escape", callback)
 }
+
+export function useResizeObserver(callback: (e: ResizeObserverEntry[]) => void) {
+  const observer = new ResizeObserver(callback)
+  onDestroy(() => observer.disconnect())
+  return (node: HTMLElement) => {
+    observer.observe(node)
+  }
+}

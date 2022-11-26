@@ -96,3 +96,19 @@ export function clamp(n: number, min: number, max: number) {
 export function randomString(length: number) {
   return Math.random().toString(16).slice(2, length+2);
 }
+
+export function carryOver(value: number, slots: number[]): number[] {
+  const values: number[] = []
+
+  let remainder = value
+  for (const s of slots) {
+    let i = 0
+    while (remainder >= s) {
+      remainder -= s
+      i++
+    }
+    values.push(i)
+  }
+
+  return values
+}
