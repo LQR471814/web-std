@@ -33,8 +33,25 @@ export async function handleSource(source: ImageSource): Promise<Uint8Array> {
 
 export async function processImage(
     source: ImageSource,
-    callbacks: ((c: ProcessingContext) => void)[]
+    callbacks: ((c: ProcessingContext) => void)[],
 ): Promise<Uint8Array[] | null> {
+    const urls = await processImageRaw(source, callbacks)
+    if (urls === null) {
+        return null
+    }
+    const converted: Uint8Array[] = []
+    for (const dataURL of urls) {
+        const response = await window.fetch(dataURL)
+        const bytes = new Uint8Array(await response.arrayBuffer());
+        converted.push(bytes)
+    }
+    return converted
+}
+
+export async function processImageRaw(
+    source: ImageSource,
+    callbacks: ((c: ProcessingContext) => void)[],
+): Promise<string[] | null> {
     const buffer = await handleSource(source)
     const bufferURL = imageFromBytes(buffer)
 
@@ -50,14 +67,11 @@ export async function processImage(
         return null
     }
 
-    const results: Uint8Array[] = []
+    const results: string[] = []
     for (const callback of callbacks) {
         callback({ buffer, canvas, context, image })
         const dataURL = canvas.toDataURL("image/jpeg")
-
-        const response = await window.fetch(dataURL)
-        const bytes = new Uint8Array(await response.arrayBuffer())
-        results.push(bytes)
+        results.push(dataURL)
     }
 
     URL.revokeObjectURL(bufferURL)
@@ -73,15 +87,28 @@ export async function resize(
     }
 ) {
     const processed = await processImage(source, [({ image, context, canvas }) => {
-        canvas.width = width ?? image.width
-        canvas.height = height ?? image.height
+        let w = image.width
+        let h = image.height
+        if (width !== undefined && height === undefined) {
+            w = width
+            h = width * (h / w)
+        } else if (width === undefined && height !== undefined) {
+            h = height
+            w = height * (w / h)
+        } else if (width !== undefined && height !== undefined) {
+            w = width
+            h = height
+        }
+
+        canvas.width = w
+        canvas.height = h
 
         if (crop) {
             context.drawImage(
                 image, crop.min[0], crop.min[1],
                 crop.max[0] - crop.min[0],
                 crop.max[1] - crop.min[1],
-                0, 0, width ?? image.width, height ?? image.height,
+                0, 0, w, h
             )
             return
         }

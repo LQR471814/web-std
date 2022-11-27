@@ -67,9 +67,12 @@ export function propertyOnSize(
 
 export type ClickOutsideOptions = {
   callback: () => void
+  axis?: (e: HTMLElement) => Element
 }
 
-export function clickOutside(node: HTMLElement, options: ClickOutsideOptions) {
+export function clickOutside(initial: HTMLElement, options: ClickOutsideOptions) {
+  let node = options.axis?.(initial) ?? initial
+
   const key = `clickoutside-${randomString(8)}`
   node.setAttribute(key, "true")
 
@@ -86,16 +89,17 @@ export function clickOutside(node: HTMLElement, options: ClickOutsideOptions) {
   }
 
   setTimeout(() => {
-    window.addEventListener("click", handler)
+    document.body.addEventListener("click", handler)
   }, 200)
 
   return {
     update(o: ClickOutsideOptions) {
       options = o
+      node = o.axis?.(node as HTMLElement) ?? node
     },
     destroy() {
       node.removeAttribute(key)
-      window.removeEventListener("click", handler)
+      document.body.removeEventListener("click", handler)
     }
   }
 }
